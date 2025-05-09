@@ -30,6 +30,11 @@ The project follows a modular structure within the `src` directory.
 │   │   ├── user.handler.ts
 │   │   └── user.handler.test.ts # Co-located unit/integration tests for handlers
 │   │   └── index.ts    # Barrel file for handlers
+│   ├── repositories    # Data access logic (interacting with DB/external APIs)
+│   │   ├── user.repository.ts
+│   │   └── user.repository.test.ts # Co-located unit tests for repositories
+│   │   └── index.ts
+│   │
 │   ├── middlewares     # Custom Express middlewares
 │   │   ├── auth.middleware.ts
 │   │   ├── error.middleware.ts
@@ -56,11 +61,13 @@ The project follows a modular structure within the `src` directory.
 **Key Principles for Structure:**
 
 *   **Modularity:** Group files by feature (e.g., `user`, `product`) within `dtos`, `handlers`, `services`, and `routes` when the application grows. For smaller apps, the provided structure is fine.
-*   **Separation of Concerns:**
+*   **Separation of Concerns (Handler -> Service -> Repository):**
     *   **`handlers` (Controllers):** Handle HTTP requests, validate input (often via DTOs and validation middleware), and call services. They should be lean.
     *   **`routes`:** Define API endpoints and map them to handlers.
     *   **`dtos`:** Define the shape of data for requests and responses.
     *   **`middlewares`:** For cross-cutting concerns like authentication, logging, error handling, validation.
+    *   **`services`:** Contain the core business logic and orchestrate interactions, typically by calling repositories.
+    *   **`repositories`:** Encapsulate data access logic, abstracting the database or external API details away from services.
 *   **Co-location of Tests:** Unit/integration tests (`.test.ts` or `.spec.ts`) should be co-located with the files they test (e.g., `user.handler.ts` and `user.handler.test.ts`).
 *   **Barrel Files (`index.ts`):** Use `index.ts` files within module directories (e.g., `src/handlers/index.ts`) to re-export entities, making imports cleaner:
     ```typescript
@@ -171,7 +178,6 @@ The project follows a modular structure within the `src` directory.
 
 ###  **Dependency Injection (DI):**
    *   For simpler projects, manual DI (passing dependencies via constructors) is sufficient.
-   <!-- *   For larger projects, consider a DI container like `InversifyJS` or `TSyringe`. -->
 
 ```ts
 // src/dtos/user/create-user.dto.ts
@@ -285,5 +291,4 @@ export default defineConfig({
 
 *   **README.md:** Maintain a comprehensive `README.md` with setup instructions, project overview, and API documentation links (if any).
 *   **API Documentation:** For larger APIs, consider generating API documentation using tools like Swagger/OpenAPI with `swagger-jsdoc` and `swagger-ui-express`.
-
 
