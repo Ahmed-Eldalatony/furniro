@@ -1,0 +1,42 @@
+{
+  "name": "furino",
+  "version": "1.0.0",
+  "description": "Ecommerce website",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch --experimental-strip-types api/index.ts",
+    "vercel-dev": "node --watch --experimental-strip-types api/index.ts",
+    "start": " NODE_ENV=production  node --experimental-strip-types api/index.ts",
+    "vercel-build": "cd client && npm run build:client &&  npm run build:server" ,
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage",
+    "lint": "biome lint --apply .",
+    "format": "biome format --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^5.1.0",
+    "express-async-errors": "^3.1.1",
+    "helmet": "^7.1.0",
+    "pino": "^9.1.0",
+    "pino-http": "^10.1.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.11.0",
+    "@biomejs/biome": "^1.9.4",
+    "pino-pretty": "^11.1.0",
+    "typescript": "^5.8.3",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^3.1.3"
+  }
+}
+
