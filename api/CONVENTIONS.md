@@ -140,15 +140,21 @@ The project follows a modular structure within the `src` directory.
    **Async/Await:** Use `async/await` for all asynchronous operations in handlers and services.
    **Error Handling:**
     *   Use a centralized error-handling middleware (e.g., `src/middlewares/error.middleware.ts`). This should be the last middleware added.
-    *   Wrap async route handlers to catch errors and pass them to `next(error)`. The `express-async-errors` package can automate this.
-        ```bash
-        npm install express-async-errors
-        ```
-        ```typescript
-        // src/createApp.ts
-        import 'express-async-errors'; // Import at the top
-        // ... rest of your app setup
-        ```
+    * Native Async Error Handling in Express 5
+
+    In Express 5, if an asynchronous route handler or middleware function throws an error or returns a rejected promise, Express automatically catches the error and forwards it to the error-handling middleware. This enhancement simplifies error handling in asynchronous code.
+
+    Example:
+```ts
+       app.get('/users/:id', async (req, res) => {
+       const user = await getUserById(req.params.id); // Assume this is an async function
+      if (!user) {
+          throw new Error('User not found');
+         }
+               res.json(user);
+         });
+```
+
     *   Create custom error classes extending `Error` for specific error types (e.g., `NotFoundError`, `ValidationError`).
    **Validation:**
     *   Use DTOs (`src/dtos/`) with libraries like `class-validator` and `class-transformer` to validate and transform request bodies, query parameters, and path parameters.
