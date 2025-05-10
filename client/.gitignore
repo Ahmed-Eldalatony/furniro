@@ -1,0 +1,79 @@
+# Specifies intentionally untracked files that Git should ignore for the client workspace.
+
+# Dependencies
+/node_modules
+
+# Build artifacts
+/dist
+
+# Environment variables
+.env
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Vite-specific
+.vitepress/cache
+.vite-inspect
+
+# Test coverage
+/coverage
+# Specifies intentionally untracked files that Git should ignore for the client workspace.
+
+# Dependencies
+/node_modules
+
+# Build artifacts
+/dist
+
+# Environment variables
+.env
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Vite-specific
+.vitepress/cache
+.vite-inspect
+
+# Test coverage
+/coverage
+<<<<<<< SEARCH
