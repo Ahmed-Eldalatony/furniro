@@ -11,7 +11,13 @@ const postHandler = new PostHandler(postService);
 
 export const postRouter = Router();
 
-// Define routes and map them to handler methods
-postRouter.post('/', (req, res, next) => postHandler.createPost(req, res, next));
-postRouter.get('/', (req, res, next) => postHandler.getAllPosts(req, res, next));
-postRouter.get('/:id', (req, res, next) => postHandler.getPostById(req, res, next));
+// Define routes and map them to handler methods                                                    
+postRouter.post('/', (req, res, next) => {
+  postHandler.createPost(req, res, next).catch(next);
+});
+
+postRouter.get('/', (req, res, next) => { postHandler.getAllPosts(req, res, next).catch(next) });
+postRouter.get('/:id', (req, res, next) => {
+  postHandler.getPostById(req, res,
+    next).catch(next)
+}); 

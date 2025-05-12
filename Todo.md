@@ -1,5 +1,5 @@
 - Furiono project, a E-commerce for furniture
-
+- set Vercel
 # Tech stack
 
 ## Frontend
@@ -39,6 +39,7 @@
 
 
 # Side
+- When the project scales i will use node, and compare both of them, also maybe i will use tsc&&tsc-alia
 - compare solutions and ideas between gpt and gemini
 - use aider for basic things, not for big chunks of code or huge rewrites
 - compare bun vs node , as bun started supporting express, doest support remix though?

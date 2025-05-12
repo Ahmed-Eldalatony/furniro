@@ -1,0 +1,7 @@
+{
+    "watch": [
+        "api/src"
+    ],
+    "ext": "ts,json",
+    "exec": "npm run start"
+}

@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "Ecommerce website",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "dev": "node --watch --experimental-strip-types api/src/index.ts",
-    "vercel-dev": "node --watch --experimental-strip-types api/index.ts",
-    "start": " NODE_ENV=production  node --experimental-strip-types api/index.ts",
-    "vercel-build": "cd client && npm run build:client &&  npm run build:server" ,
+    "dev":"bun run api/src/index.ts",
+    "dev:node": "nodemon",
+    "prestart": "tsc && tsc-alias",
+    "start": "ts-node --project ./tsconfig.json -r tsconfig-paths/register api/dist/index.js",
+    "vercel-build": "cd client && npm run build:client &&  npm run build:server",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
@@ -28,15 +29,17 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/node": "^22.11.0",
-    "@biomejs/biome": "^1.9.4",
+    "nodemon": "^3.1.9",
     "pino-pretty": "^11.1.0",
+    "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.16",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3",
     "vite-tsconfig-paths": "^4.3.2",
     "vitest": "^3.1.3"
   }
-
 }
-

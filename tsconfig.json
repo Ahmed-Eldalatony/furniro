@@ -1,25 +1,27 @@
 // TypeScript compiler configuration.
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
+    "target": "es5", // Compile to ES5 for broader compatibility
+    "module": "commonjs", // Use CommonJS modules (Node.js de
     "lib": ["ESNext"],
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileName": true,
-    "strictPropertyInitialization": false, // Disable strict property initialization
-    "moduleResolution": "Node",
+    "sourceMap": true, // Generate source maps for debugging
+    "outDir": "api/dist",
+    "rootDir": "./api/src",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
-    },
-    "sourceMap": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+      "@/*": ["./api/src/*"]
+     },
+    "strict": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false, // Disable strict property initialization
+    "moduleResolution": "Node"
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/**/*.spec.ts"]
+  "include": ["./api/src/*"],
+  "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/**/*.spec.ts"],
+  "ts-node": { // Configuration for ts-node
+    "transpileOnly": true, // Speeds up development
+    "require": ["tsconfig-paths/register"] // Enable path aliases in ts-node
+  },
 }
