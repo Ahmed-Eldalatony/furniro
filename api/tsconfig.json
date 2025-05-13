@@ -5,11 +5,11 @@
     "module": "commonjs", // Use CommonJS modules (Node.js de
     "lib": ["ESNext"],
     "sourceMap": true, // Generate source maps for debugging
-    "outDir": "api/dist",
-    "rootDir": "./api",
+    "outDir": "dist",
+    "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./api/*"]
+      "@/*": ["./src/*"]
      },
     "strict": false,
     "esModuleInterop": true,
@@ -18,7 +18,7 @@
     "strictPropertyInitialization": false, // Disable strict property initialization
     "moduleResolution": "Node"
   },
-  "include": ["./api/*"],
+  "include": ["./src/*", "index.ts", "createApp.ts"],
   "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/**/*.spec.ts"],
   "ts-node": { // Configuration for ts-node
     "transpileOnly": true, // Speeds up development
