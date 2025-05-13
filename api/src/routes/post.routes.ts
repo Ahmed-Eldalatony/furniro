@@ -17,6 +17,7 @@ postRouter.post('/', (req, res, next) => {
 });
 
 postRouter.get('/', (req, res, next) => { postHandler.getAllPosts(req, res, next).catch(next) });
+
 postRouter.get('/:id', (req, res, next) => {
   postHandler.getPostById(req, res,
     next).catch(next)

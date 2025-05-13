@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ],
+   "outputDirectory": "client/dist-client",
+  "installCommand": "npm install && npm install --prefix client"
+}

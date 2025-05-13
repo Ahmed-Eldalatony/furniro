@@ -6,10 +6,10 @@
     "lib": ["ESNext"],
     "sourceMap": true, // Generate source maps for debugging
     "outDir": "api/dist",
-    "rootDir": "./api/src",
+    "rootDir": "./api",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./api/src/*"]
+      "@/*": ["./api/*"]
      },
     "strict": false,
     "esModuleInterop": true,
@@ -18,7 +18,7 @@
     "strictPropertyInitialization": false, // Disable strict property initialization
     "moduleResolution": "Node"
   },
-  "include": ["./api/src/*"],
+  "include": ["./api/*"],
   "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/**/*.spec.ts"],
   "ts-node": { // Configuration for ts-node
     "transpileOnly": true, // Speeds up development

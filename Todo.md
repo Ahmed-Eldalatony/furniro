@@ -1,5 +1,9 @@
 - Furiono project, a E-commerce for furniture
-- set Vercel
+- understand the architecture of the Backend
+- make it work with vercel
+- make this Backend work with the frontend using the same architecture 
+- how to use useReducer
+
 # Tech stack
 
 ## Frontend

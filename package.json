@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "dev":"bun run api/src/index.ts",
+    "dev":"bun run api/index.ts",
     "dev:node": "nodemon",
     "prestart": "tsc && tsc-alias",
     "start": "ts-node --project ./tsconfig.json -r tsconfig-paths/register api/dist/index.js",
