@@ -18,7 +18,7 @@
     "strictPropertyInitialization": false, // Disable strict property initialization
     "moduleResolution": "Node"
   },
-  "include": ["./src/*", "index.ts", "createApp.ts"],
+  "include": ["./src/*", "entry/index.ts", "createApp.ts","index.ts"],
   "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/**/*.spec.ts"],
   "ts-node": { // Configuration for ts-node
     "transpileOnly": true, // Speeds up development

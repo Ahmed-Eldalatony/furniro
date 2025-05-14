@@ -3,9 +3,9 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/api"
+      "destination": "/entry"
     }
   ],
-   "outputDirectory": "api/dist",
+   "outputDirectory": "dist",
   "installCommand": "npm install"
 }
