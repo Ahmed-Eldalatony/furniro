@@ -6,7 +6,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'; // Import the plugin
 export default defineConfig({
   plugins: [react(), tsconfigPaths()], // Add the plugin here
   server: {
-    port: 5173, // Default Vite port
+    port: 4000, // Default Vite port
     // Optional: Proxy API requests to the backend
     // proxy: {
     //   '/api': {

@@ -3,9 +3,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/entry"
+      "destination": "/api"
     }
-  ],
-   "outputDirectory": "dist",
-  "installCommand": "npm install"
+  ]
 }

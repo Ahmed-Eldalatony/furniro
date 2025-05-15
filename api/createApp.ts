@@ -7,8 +7,10 @@ import { logger } from '@/utils/logger';
 import { errorHandler } from '@/middlewares/error.middleware';
 import { mainRouter } from '@/routes';
 
+import { config } from '@/config';
 export function createApp(): Application {
   const app = express();
+  const port = config.port;
 
   // Security Middleware
   app.use(helmet());
@@ -25,7 +27,12 @@ export function createApp(): Application {
   app.use('/api', mainRouter); // Example base path
 
   // Error Handling Middleware (Must be last)
+
   app.use(errorHandler);
+
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  })
 
   return app;
 }

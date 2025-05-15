@@ -1,4 +1,7 @@
-- Furiono project, a E-commerce for furniture
+Implement the module alias for the Frontend
+- add knip .js
+- look learn about the nvim debugger, there is also another video about debuge for devops tools
+- Furniro project, a E-commerce for furniture
 - understand the architecture of the Backend
 - make it work with vercel
 - make this Backend work with the frontend using the same architecture 
@@ -16,7 +19,7 @@
 - Knip Plugin statically typed routes
 - Umi.js Plugin RR7 conventions?
 - vite-plugin-next-react-router: Provides folder routes like next?
-- i18next react-i18next i18next-browser-languagedetector 
+- i18next react-i18next i18next-browser-language detector 
 
 
 ## Backend
