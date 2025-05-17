@@ -2,39 +2,35 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-// import pinoHttp from 'pino-http';
-// import { logger } from '@/utils/logger';
-// import { errorHandler } from '@/middlewares/error.middleware';
+import { config } from '@/config'; // Import the config object
+import { errorHandler } from '@/middlewares';
 import { mainRouter } from '@/routes';
 
-// const isProduction = process.env.NODE_ENV === 'production';
 
-// import { config } from '@/config';
 export function createApp(): Application {
   const app = express();
-  const port = 3000
+  const port = config.port; // Use config.port
 
   // Security Middleware
   app.use(helmet());
   app.use(cors());
-
-  // Logging Middleware
-  // app.use(pinoHttp({ logger }));
 
   // Body Parsing Middleware
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
   // Routes
-  app.use('/api', mainRouter); // Example base path
+  app.get('/', (req, res) => {
+    res.status(200).json({ status: 'UP', port });
+  });
+  app.use('/api', mainRouter); // Mount the main router under /api
 
   // Error Handling Middleware (Must be last)
-
-  // app.use(errorHandler);
+  app.use(errorHandler);
 
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
-  })
-
+  });
+  //
   return app;
 }

@@ -1,13 +1,9 @@
 // Centralized application configuration loaded from environment variables.
 import { envSchema } from './env.validation';
-import { logger } from '@/utils/logger';
-
 const parsedEnv = envSchema.safeParse(process.env);
 
 if (!parsedEnv.success) {
-  if (process.env.NODE_ENV !== 'production') {
-    logger.error('❌ Invalid environment variables:', parsedEnv.error.format());
-  }
+  console.error('❌ Invalid environment variables:', parsedEnv.error.format());
   throw new Error('Invalid environment variables');
 }
 

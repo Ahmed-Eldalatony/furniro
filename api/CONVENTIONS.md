@@ -289,7 +289,6 @@ export default defineConfig({
 
 ## 9. Logging
 
-*   Use `pino` as structured
 *   Log important events, errors, and incoming requests (via middleware).
 *   Avoid logging sensitive information.
 

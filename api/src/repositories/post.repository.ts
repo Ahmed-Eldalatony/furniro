@@ -1,6 +1,6 @@
 // Repository for handling Post data access (simulated in-memory).
 
-import { CreatePostDto } from "@/dtos";
+import { CreatePostDto } from '../dtos/post/create-post.dto';
 interface Post {
   id: string;
   title: string;
