@@ -2,14 +2,11 @@
   "name": "furino",
   "version": "1.0.0",
   "description": "Ecommerce website",
-  "main": "index.ts",
+  "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "bun run index.ts",
-    "dev:node": "nodemon",
-    "build": "",
-    "typecheck": "tsc --noEmit",
-    "start": "node api/index.ts"
+    "dev": "bun run index.ts --hot ",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -33,7 +30,6 @@
     "nodemon": "^3.1.9",
     "pino-pretty": "^11.1.0",
     "tsc-alias": "^1.8.16",
-    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3",
     "vite-tsconfig-paths": "^4.3.2",
     "vitest": "^3.1.3"

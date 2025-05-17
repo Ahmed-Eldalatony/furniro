@@ -5,7 +5,9 @@ import { logger } from '@/utils/logger';
 const parsedEnv = envSchema.safeParse(process.env);
 
 if (!parsedEnv.success) {
-  logger.error('❌ Invalid environment variables:', parsedEnv.error.format());
+  if (process.env.NODE_ENV !== 'production') {
+    logger.error('❌ Invalid environment variables:', parsedEnv.error.format());
+  }
   throw new Error('Invalid environment variables');
 }
 

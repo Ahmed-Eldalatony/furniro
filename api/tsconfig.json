@@ -3,9 +3,9 @@
     "target": "es5", // Compile to ES5 for broader compatibility
     "module": "commonjs", // Use CommonJS modules (Node.js de
     "lib": ["ESNext"],
-    "sourceMap": true, // Generate source maps for debugging
-    "outDir": "dist",
+    "sourceMap": false, // Generate source maps for debugging
     "rootDir": ".",
+    "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
@@ -13,14 +13,6 @@
     "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "strictPropertyInitialization": false, // Disable strict property initialization
-    "moduleResolution": "Node"
-  },
-  "include": ["./src/*", "api/index.ts", "createApp.ts","index.ts"],
-  "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/**/*.spec.ts"],
-  "ts-node": { // Configuration for ts-node
-    "transpileOnly": true, // Speeds up development
-    "require": ["tsconfig-paths/register"] // Enable path aliases in ts-node
   },
 }

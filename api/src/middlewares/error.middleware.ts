@@ -10,7 +10,9 @@ export const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  logger.error(err); // Log the error details
+  if (process.env.NODE_ENV !== 'production') {
+    logger.error(err); // Log the error details
+  }
 
   const statusCode = err.statusCode || 500;
   const message = err.message || 'An unexpected error occurred';
