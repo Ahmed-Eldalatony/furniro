@@ -1,41 +1,40 @@
 {
   "name": "client",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "biome lint --apply .",
-    "preview": "vite preview",
-    "test": "vitest",
-    "test:watch": "vitest watch",
-    "test:coverage": "vitest run --coverage",
-    "vercel-build": "tsc -b && vite build",
-    "knip": "knip"
+    "build": "react-router build",
+    "dev": "react-router dev",
+    "start": "react-router-serve ./build/server/index.js",
+    "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
-    "@react-router/dev": "^7.6.0",
-    "@tailwindcss/vite": "^4.1.7",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.511.0",
+    "@react-router/node": "^7.5.3",
+    "isbot": "^5.1.27",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "tailwind-merge": "^3.3.0",
-    "tailwindcss": "^4.1.7"
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "@radix-ui/react-slot": "^1.2.2",
+    "axios": "^1.7.2",
+    "react-router": "^7.5.3",
+    "lucide-react": "^0.511.0",
+    "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {
-    "@types/node": "^22.15.18",
-    "@types/react": "^19.1.3",
-    "@types/react-dom": "^19.1.3",
-    "@vitejs/plugin-react": "^4.4.1",
-    "@vitest/coverage-v8": "^3.1.3",
-    "knip": "^5.56.0",
+    "@react-router/dev": "^7.5.3",
+    "@tailwindcss/vite": "^4.1.4",
     "tw-animate-css": "^1.3.0",
+    "@types/node": "^20",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vercel/react-router": "^1.1.0",
+    "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
-    "vite": "^6.3.5",
-    "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.1.3"
+    "vite": "^6.3.3",
+    "@vitest/coverage-v8": "^3.1.3",
+    "vite-tsconfig-paths": "^5.1.4"
   }
 }
+
+
