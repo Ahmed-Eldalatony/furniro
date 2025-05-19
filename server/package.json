@@ -6,9 +6,10 @@
   "type": "commonjs",
   "scripts": {
     "start:dev": "ts-node --project ./tsconfig.json -r tsconfig-paths/register dist/index.js",
-    "build":"tsc && tsc-alias",
+    "build": "tsc && tsc-alias",
+    "generate":"prisma generate",
     "dev:node": "nodemon",
-    "dev":"bun run index.ts --hot"
+    "dev": "bun run index.ts --hot"
   },
   "keywords": [],
   "author": "",
@@ -18,11 +19,12 @@
     "dotenv": "^16.4.5",
     "express": "^5.1.0",
     "helmet": "^7.1.0",
+    "prisma": "^6.8.2",
+    "sqlite3": "^5.1.6",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "zod": "^3.23.8",
-    "sequelize": "^6.37.1",
-    "sqlite3": "^5.1.6"
+    "@prisma/client": "^6.8.2"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -36,5 +38,9 @@
   },
   "engines": {
     "node": "22.x"
-  }
+  },
+"pnpm": {
+   "onlyBuiltDependencies": [
+        "@prisma/client"
+    ]}
 }

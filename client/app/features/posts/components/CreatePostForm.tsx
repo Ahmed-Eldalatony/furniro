@@ -4,8 +4,15 @@ import { Input } from '@/components/ui/input'; // Assuming shadcn/ui input
 import { Textarea } from '@/components/ui/textarea'; // Assuming shadcn/ui textarea
 import { Button } from '@/components/ui/button'; // Assuming shadcn/ui button
 
+// Define the payload type expected by the form
+interface CreatePostFormPayload {
+  title: string;
+  content: string;
+  authorId: string;
+}
+
 interface CreatePostFormProps {
-  onSubmit: (data: { title: string; content: string; authorId: string }) => void;
+  onSubmit: (data: CreatePostFormPayload) => void;
   isLoading: boolean;
 }
 

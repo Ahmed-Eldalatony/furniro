@@ -1,3 +1,5 @@
+- merge the archive files
+- Why wold i make the same folder architecture in the root and in the features folder
 Implement the module alias for the Frontend
 - add knip .js
 - look learn about the nvim debugger, there is also another video about debuge for devops tools

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5", // Compile to ES5 for broader compatibility
-    "module": "commonjs", // Use CommonJS modules (Node.js de
+    "module": "commonjs",
     "lib": ["ESNext"],
     "sourceMap": false, // Generate source maps for debugging
     "rootDir": ".",

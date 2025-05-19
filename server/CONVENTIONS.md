@@ -297,3 +297,4 @@ export default defineConfig({
 *   **README.md:** Maintain a comprehensive `README.md` with setup instructions, project overview, and API documentation links (if any).
 *   **API Documentation:** For larger APIs, consider generating API documentation using tools like Swagger/OpenAPI with `swagger-jsdoc` and `swagger-ui-express`.
 
+## 10. Use bun for installation

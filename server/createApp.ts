@@ -3,13 +3,16 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import { config } from '@/config'; // Import the config object
-import { errorHandler } from '@/middlewares';
+import { errorHandler, loggingMiddleware } from '@/middlewares'; // Import loggingMiddleware
 import { mainRouter } from '@/routes';
 
 
 export function createApp(): Application {
   const app = express();
   const port = config.port; // Use config.port
+
+  // Logging Middleware (Apply early)
+  app.use(loggingMiddleware);
 
   // Security Middleware
   app.use(helmet());
@@ -28,6 +31,9 @@ export function createApp(): Application {
   // Error Handling Middleware (Must be last)
   app.use(errorHandler);
 
+  // Note: The app.listen call should ideally be outside of createApp
+  // in the main index.ts file to allow for easier testing.
+  // For now, keeping it here as per existing structure.
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });

@@ -31,5 +31,6 @@ Thumbs.db
 *.sln
 *.sw?
 
+nohup.out
 # Aider files
 .aider*
