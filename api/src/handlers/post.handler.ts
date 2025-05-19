@@ -1,13 +1,13 @@
 // Request handler (Controller) for Post-related endpoints.
 import { Request, Response, NextFunction } from 'express';
-import { PostService } from '@/services/post.service'; // Import the service
+import { IPostService } from '@/services/post.service'; // Import the service interface
 import { CreatePostDto } from '@/dtos/post/create-post.dto'; // Import the DTO
 import { ApiResponse } from '@/utils/api-response'; // Import the response utility
 
 export class PostHandler {
-  private postService: PostService;
+  private postService: IPostService;
 
-  constructor(postService: PostService) {
+  constructor(postService: IPostService) {
     this.postService = postService;
   }
 
@@ -30,7 +30,12 @@ export class PostHandler {
   }
 
   async getPostById(req: Request, res: Response, next: NextFunction) {
-    const postId = req.params.id;
+    const postId = parseInt(req.params.id, 10); // Parse ID to number for Prisma
+
+    if (isNaN(postId)) {
+       return res.status(400).json(ApiResponse.error('Invalid post ID', 400));
+    }
+
     const post = await this.postService.getPostById(postId);
 
     if (!post) {

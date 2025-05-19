@@ -1,26 +1,33 @@
 // Service for handling Post business logic.
-import { PostRepository } from '@/repositories/post.repository'; // Import the repository
+import { IPostRepository } from '@/repositories/post.repository'; // Import the repository interface
+import { Post } from '@prisma/client'; // Import Prisma Post type
 
-export class PostService {
-  private postRepository: PostRepository;
+export interface IPostService {
+  createPost(postData: { title: string; content: string; authorId: string }): Promise<Post>;
+  getAllPosts(): Promise<Post[]>;
+  getPostById(id: number): Promise<Post | null>;
+}
 
-  constructor(postRepository: PostRepository) {
+export class PostService implements IPostService {
+  private postRepository: IPostRepository;
+
+  constructor(postRepository: IPostRepository) {
     this.postRepository = postRepository;
   }
 
-  async createPost(postData: { title: string; content: string; authorId: string }) {
+  async createPost(postData: { title: string; content: string; authorId: string }): Promise<Post> {
     // Add any business rules here before creating the post
     // e.g., check author existence, content length limits, etc.
     const newPost = await this.postRepository.create(postData);
     return newPost;
   }
 
-  async getAllPosts() {
+  async getAllPosts(): Promise<Post[]> {
     const posts = await this.postRepository.findAll();
     return posts;
   }
 
-  async getPostById(id: string) {
+  async getPostById(id: number): Promise<Post | null> {
     const post = await this.postRepository.findById(id);
     // Add error handling if post is not found
     if (!post) {
