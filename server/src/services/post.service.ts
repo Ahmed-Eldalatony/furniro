@@ -16,25 +16,47 @@ export class PostService implements IPostService {
   }
 
   async createPost(postData: { title: string; content: string; authorId: string }): Promise<Post> {
+    console.log('createPost service received:', postData);
     // Add any business rules here before creating the post
     // e.g., check author existence, content length limits, etc.
-    const newPost = await this.postRepository.create(postData);
-    return newPost;
+    try {
+      const newPost = await this.postRepository.create(postData);
+      console.log('createPost service returning:', newPost);
+      return newPost;
+    } catch (error) {
+      console.error('Error in createPost service:', error);
+      throw error; // Re-throw the error to be caught by the handler
+    }
   }
 
   async getAllPosts(): Promise<Post[]> {
-    const posts = await this.postRepository.findAll();
-    return posts;
+    console.log('getAllPosts service called');
+    try {
+      const posts = await this.postRepository.findAll();
+      console.log('getAllPosts service returning:', posts);
+      return posts;
+    } catch (error) {
+      console.error('Error in getAllPosts service:', error);
+      throw error;
+    }
   }
 
   async getPostById(id: number): Promise<Post | null> {
-    const post = await this.postRepository.findById(id);
-    // Add error handling if post is not found
-    if (!post) {
-      // In a real app, you'd throw a custom error like NotFoundError
-      // throw new NotFoundError(`Post with id ${id} not found`);
-      return null; // Or throw an error
+    console.log('getPostById service called with id:', id);
+    try {
+      const post = await this.postRepository.findById(id);
+      // Add error handling if post is not found
+      if (!post) {
+        console.warn(`Post with id ${id} not found`);
+        // In a real app, you'd throw a custom error like NotFoundError
+        // throw new NotFoundError(`Post with id ${id} not found`);
+        return null; // Or throw an error
+      }
+      console.log('getPostById service returning:', post);
+      return post;
+    } catch (error) {
+      console.error('Error in getPostById service:', error);
+      throw error;
     }
-    return post;
   }
 }

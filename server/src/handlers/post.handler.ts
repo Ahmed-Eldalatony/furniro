@@ -14,34 +14,58 @@ export class PostHandler {
   async createPost(req: Request, res: Response, next: NextFunction) {
     // In a real app, validation middleware would handle DTO validation
     const postData: CreatePostDto = req.body;
+    console.log('createPost handler received:', postData);
 
     // Basic check (replace with validation middleware later)
     if (!postData.title || !postData.content || !postData.authorId) {
+      console.warn('Missing required fields in createPost');
       return res.status(400).json(ApiResponse.error('Missing required fields', 400));
     }
 
-    const newPost = await this.postService.createPost(postData);
-    res.status(201).json(ApiResponse.success(newPost, 'Post created successfully', 201));
+    try {
+      const newPost = await this.postService.createPost(postData);
+      console.log('createPost handler sending response:', newPost);
+      res.status(201).json(ApiResponse.success(newPost, 'Post created successfully', 201));
+    } catch (error) {
+      console.error('Error in createPost handler:', error);
+      next(error); // Pass the error to the error handling middleware
+    }
   }
 
   async getAllPosts(req: Request, res: Response, next: NextFunction) {
-    const posts = await this.postService.getAllPosts();
-    res.status(200).json(ApiResponse.success(posts, 'Posts retrieved successfully'));
+    console.log('getAllPosts handler called');
+    try {
+      const posts = await this.postService.getAllPosts();
+      console.log('getAllPosts handler sending response:', posts);
+      res.status(200).json(ApiResponse.success(posts, 'Posts retrieved successfully'));
+    } catch (error) {
+      console.error('Error in getAllPosts handler:', error);
+      next(error);
+    }
   }
 
   async getPostById(req: Request, res: Response, next: NextFunction) {
     const postId = parseInt(req.params.id, 10); // Parse ID to number for Prisma
+    console.log('getPostById handler called with id:', postId);
 
     if (isNaN(postId)) {
-       return res.status(400).json(ApiResponse.error('Invalid post ID', 400));
+      console.warn('Invalid post ID in getPostById');
+      return res.status(400).json(ApiResponse.error('Invalid post ID', 400));
     }
 
-    const post = await this.postService.getPostById(postId);
+    try {
+      const post = await this.postService.getPostById(postId);
 
-    if (!post) {
-      return res.status(404).json(ApiResponse.error(`Post with id ${postId} not found`, 404));
+      if (!post) {
+        console.warn(`Post with id ${postId} not found`);
+        return res.status(404).json(ApiResponse.error(`Post with id ${postId} not found`, 404));
+      }
+
+      console.log('getPostById handler sending response:', post);
+      res.status(200).json(ApiResponse.success(post, 'Post retrieved successfully'));
+    } catch (error) {
+      console.error('Error in getPostById handler:', error);
+      next(error);
     }
-
-    res.status(200).json(ApiResponse.success(post, 'Post retrieved successfully'));
   }
 }

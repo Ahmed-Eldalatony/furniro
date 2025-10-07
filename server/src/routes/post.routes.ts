@@ -6,13 +6,16 @@ import express from 'express';
 import { PostRepository } from '@/repositories/post.repository'; // Import the repository
 
 // Manual Dependency Injection
-const postRepository = new PostRepository();
+import prisma from '@/config/prisma';
+
+// Manual Dependency Injection
+const postRepository = new PostRepository(prisma);
 const postService = new PostService(postRepository);
 const postHandler = new PostHandler(postService);
 
 export const postRouter = express.Router();
 
-// // Define routes and map them to handler methods                                                    
+// // Define routes and map them to handler methods
 postRouter.post('/', (req, res, next) => {
   postHandler.createPost(req, res, next).catch(next);
 });

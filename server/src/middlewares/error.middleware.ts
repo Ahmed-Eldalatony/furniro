@@ -9,7 +9,7 @@ export const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-
+  console.error('Error:', err); // Log the error
   const statusCode = err.statusCode || 500;
   const message = err.message || 'An unexpected error occurred';
 
